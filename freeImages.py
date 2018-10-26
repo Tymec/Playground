@@ -61,16 +61,19 @@ def testImage(repeat_times=100):
 
 if __name__ is __name__:
     while True:
-        WORKING, NOT_WORKING = testImage(200)
-        print((
-            "Current amount of codes that do not work: {}\n"
-            "Current amount of codes that work: {}\n"
-            "Estimated amount of codes left to process: {}\n"
-            "---------------------------------------------------"
-            ).format(
-                len(NOT_WORKING), 
-                len(WORKING), 
-                1000000 - (len(NOT_WORKING) + len(WORKING))
+        try:
+            WORKING, NOT_WORKING = testImage(200)
+            print((
+                "Current amount of codes that do not work: {}\n"
+                "Current amount of codes that work: {}\n"
+                "Estimated amount of codes left to process: {}\n"
+                "---------------------------------------------------"
+                ).format(
+                    len(NOT_WORKING), 
+                    len(WORKING), 
+                    1000000 - (len(NOT_WORKING) + len(WORKING))
+                )
             )
-        )
-        time.sleep(DELAY_TIME)
+            time.sleep(DELAY_TIME)
+        except ConnectionError:
+            time.sleep(10000)
