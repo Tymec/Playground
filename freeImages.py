@@ -75,5 +75,6 @@ if __name__ is __name__:
                 )
             )
             time.sleep(DELAY_TIME)
-        except ConnectionError:
+        except requests.ConnectionError:
+            print("\nWaiting for 10000s\n")
             time.sleep(10000)
