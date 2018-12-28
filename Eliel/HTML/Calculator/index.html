@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <title>My Webpage</title>
+	    <meta charset="UTF -8">
+		<meta name="description" content="This is my webpage!">
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+		<meta name="author" content="Tymek">
+		
+		<link href="style.css" type="text/css" rel="stylesheet">
+		
+		<script src="jquery.js" type="text/javascript"></script>
+		<script type= "text/javascript">
+		    function sum()
+			{
+			    $('#result').html(parseInt($('#number1').val()) + parseInt($('#number2').val()));
+			}
+		    function sub()
+			{
+			    $('#result').html($('#number1').val() - $('#number2').val());
+			}
+		    function mul()
+			{
+			    $('#result').html($('#number1').val() * $('#number2').val());
+			}
+			function div()
+			{
+			    $('#result').html($('#number1').val() / $('#number2').val());
+			}
+		</script>
+	</head>
+	<body>
+	    <div class="header">
+	        Calculator
+	    </div>
+		<table>
+		    <tr>
+			    <td>Number 1: <input id="number1" type="text"/></td>
+				<td>Number 2: <input id="number2" type="text"/></td>
+		    </tr>
+			<tr>
+			    <td colspan="2">
+				    <input type="button" value="+" onclick="sum()"/>
+					<input type="button" value="-" onclick="sub()"/>
+					<input type="button" value="*" onclick="mul()"/>
+					<input type="button" value="/" onclick="div()"/>
+				</td>
+			</tr>
+            <tr>
+                <td colspan="2">
+                    <div id="result"/>
+				</td>
+			</tr>
+        </table>			
+	</body>
+</html>
