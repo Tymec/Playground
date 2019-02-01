@@ -1,5 +1,7 @@
 from picamera import PiCamera
 import discord
+import datetime
+import json
 from discord.ext import commands
 from asyncio import sleep
 
@@ -30,15 +32,12 @@ async def on_ready():
 @bot.command(pass_context=True)
 async def camera(ctx):
     '''Take a picture with PiCamera'''
-	await sleep(0.5)
-	await self.bot.delete_message(ctx.message)
-	
-	image_filename = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.jpg")
-	camera.start_preview()
-	await sleep(5.0)
-	camera.capture(image_filename)
-	camera.stop_preview()
-	
+    await sleep(0.5)
+    await bot.delete_message(ctx.message)
+
+    image_filename = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.jpg")
+    pi_camera.capture(image_filename)
+
     await bot.send_file(ctx.message.channel, image_filename)
 #endregion
 
