@@ -6,28 +6,26 @@ import time
 import pickle
 import json
 
+#Requires another file with the URL and PROXY to use
+from helpers import brute
+
 DELAY_TIME = 2.0
 STRING_SIZE = 8
 POSSIBILITIES = pow(26 + 10, STRING_SIZE)     #COUNT OF ALPHABET AND NUMBERS TO THE POWER OF STRING_SIZE
-URL = "http://kunde.reedfoto.no/bestilling/thumb/"
-PROXY = {
-    "https": "https://190.145.140.174:51010"
-}
-
 
 def load():
-    with open("pickle/freeImages_not_working.pkl", 'rb') as pkl:
+    with open("pickle/bruteForceAttack_not_working.pkl", 'rb') as pkl:
         NOT_WORKING = pickle.load(pkl)
-    with open("pickle/freeImages_working.pkl", 'rb') as pkl:
+    with open("pickle/bruteForceAttack_working.pkl", 'rb') as pkl:
         WORKING = pickle.load(pkl)
     return WORKING, NOT_WORKING
     
 def save(merged_working, not_working):
-    with open("pickle/freeImages_not_working.pkl", 'wb') as pkl:
+    with open("pickle/bruteForceAttack_not_working.pkl", 'wb') as pkl:
         pickle.dump(not_working, pkl)
-    with open("pickle/freeImages_working.pkl", 'wb') as pkl:
+    with open("pickle/bruteForceAttack_working.pkl", 'wb') as pkl:
         pickle.dump(merged_working, pkl)
-    with open("pickle/freeImages_url.json", 'w') as f:
+    with open("pickle/bruteForceAttack_url.json", 'w') as f:
         json.dump(merged_working, f, indent=4)
 
 def generate_random_string(base_string_character):
@@ -63,7 +61,7 @@ def testImage(repeat_times=100):
         print("Processing code: {} - {} out of {} - {}".format(code, i, repeat, "Success" if works else "Failure"), end='\r')
         #time.sleep(DELAY_TIME * 0.5)
     end = time.time()
-    print("Found {} valid images out of {} iterations - {:.3f}s".format(len(WORKING_current), i, end - start))
+    print("Found {} valid urls out of {} iterations - {:.3f}s".format(len(WORKING_current), i, end - start))
     merged_working = WORKING + WORKING_current
     save(merged_working, NOT_WORKING)
     return WORKING, NOT_WORKING, (end - start)
@@ -73,9 +71,9 @@ if __name__ is __name__:
         try:
             WORKING, NOT_WORKING, TIME = testImage(200)
             print((
-                "Current amount of codes that do not work: {}\n"
-                "Current amount of codes that work: {}\n"
-                "Estimated amount of codes left to process: {}\n"
+                "Current amount of urls that do not work: {}\n"
+                "Current amount of urls that work: {}\n"
+                "Estimated amount of urls left to process: {}\n"
                 "Estimated time left: {:.0f}h\n"
                 "---------------------------------------------------"
                 ).format(
