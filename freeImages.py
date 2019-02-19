@@ -1,3 +1,7 @@
+# Sends lots of requests to a website with a randomized 8 character code at the end (google.com/image/**8gU4Ljd3**), 
+# I found an "exploit" (as in, anyone can access someones picture by going to their link) in my schools photography website, 
+# so I decided to randomize that last code and see what happens, which it indeed worked. 
+
 import requests
 import string
 import random
