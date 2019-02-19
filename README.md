@@ -1,4 +1,4 @@
-# RandomSmallProjects
+# Playground
 ### Small scripts that don't need their own repositories
 
 *Projects:*
