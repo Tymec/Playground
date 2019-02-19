@@ -1,8 +1,15 @@
 from hltbScraper import HLTB
 import openpyxl
+import argparse
 
-wb = openpyxl.load_workbook("Plans.xlsx")
-sheet = wb.get_sheet_by_name('Games')
+parser = argparse.ArgumentParser(description='Files from a path to paths in json file')
+parser.add_argument('-i', '--xlsx', help="Path to the xlsx file", dest="xlsx", metavar="xlsx", required=True)
+parser.add_argument('-o', '--out', help="Path to the output file", dest="out", metavar="out", required=True)
+parser.add_argument('-s', '--sheet', help="Name of the sheet to use", dest="sheet", metavar="sheet", required=True)
+args = vars(parser.parse_args())
+
+wb = openpyxl.load_workbook(args["xlsx"])
+sheet = wb.get_sheet_by_name(args["sheet"])
 
 flush = ""
 for i in range(0, 100):
@@ -33,4 +40,4 @@ while True:
     print(flush, end="\r")
     print("#{}: {} - {}".format(i, cell, time_to_beat), end="\r")
 print("")
-wb.save("Plans.xlsx")
+wb.save(args["xlsx"])

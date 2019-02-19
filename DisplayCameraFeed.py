@@ -1,12 +1,8 @@
 import cv2
 import numpy as np
 
-cam1 = cv2.VideoCapture("rtsp://admin:Wegeta@192.168.1.5:554/cam/realmonitor?channel=1&subtype=1")
-cam2 = cv2.VideoCapture("rtsp://admin:Wegeta@192.168.1.5:554/cam/realmonitor?channel=2&subtype=1")
-cam3 = cv2.VideoCapture("rtsp://admin:Wegeta@192.168.1.5:554/cam/realmonitor?channel=3&subtype=1")
-cam4 = cv2.VideoCapture("rtsp://admin:Wegeta@192.168.1.5:554/cam/realmonitor?channel=4&subtype=1")
-cam5 = cv2.VideoCapture("rtsp://admin:Wegeta@192.168.1.5:554/cam/realmonitor?channel=5&subtype=1")
-cam6 = cv2.VideoCapture("rtsp://192.168.1.10:554/user=admin_password=BZx7EIXs_channel=1_stream=0.sdp?real_stream")
+# Requires a separate file with cam1-cam6 defined
+from helpers import cameras
 
 while(1):
     ret, cam1_frame = cam1.read()
