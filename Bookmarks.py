@@ -2,11 +2,12 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser(description='Bookmarks to links')
-parser.add_argument('-f', '--file', help="Path to file", dest="file", metavar="file", required=True)
+parser.add_argument('-i', '--in', help="Path to file", dest="file", metavar="file", required=True)
+parser.add_argument('-o', '--out', help="Path to output file", dest="out", metavar="out", required=True)
 args = vars(parser.parse_args())
 
 in_file = args["file"]
-out_file = "C:\\Users\\Tymek11rt\\Desktop\\out.txt"
+out_file = args["out"]
 bookmarks = []
 
 with open(in_file, 'r', encoding="utf8") as f:
