@@ -20,7 +20,7 @@ pi_camera = PiCamera()
 #region Discord Events
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="bot.timbobimbo.club | !help"))
+    await bot.change_presence(game=discord.Game(name="github.timbobimbo.club | !help"))
     print('------')
     print('DISCORD BOT')
     print('Logged in as')
