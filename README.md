@@ -11,4 +11,5 @@
 - **bruteForceAttack:** Sends lots of requests to a URL and adding a randomized 8 character code.
 - **howlongtobeat:** Loads a spreadsheet with a list of games and gets the time to beat each game from howlongtobeat.com
 - **csvColumnToText:** Parses a csv spreadsheet column into a text document
+- **wifie:** Automatically signs in on the wifi login page
 - **Eliel:** A group of projects that I did with a teacher a few years ago.
