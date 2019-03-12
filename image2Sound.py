@@ -1,5 +1,5 @@
 import argparse
-import ToneGenerator
+from helper import ToneGenerator
 from PIL import Image
 
 parser = argparse.ArgumentParser()
