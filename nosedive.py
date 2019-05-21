@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import requests
+import time
 
 
 def debug_random_profile_generator(final_rank, rating_amount, username=None, description=None, variation=5):
@@ -9,7 +10,7 @@ def debug_random_profile_generator(final_rank, rating_amount, username=None, des
     
     # Generate a random username and put it into the profile dictionary
     if not username:
-        username = requests.get(url='https://randomuser.me/api/').json()['results'][0]['name']['first']
+        username = requests.get(url='https://randomuser.me/api/').json()['results'][0]['name']['first'].title()
     profile['username'] = username
     
     if description:
@@ -39,17 +40,23 @@ def rank(profile, profile_to_rank, rank):
     '''Give a rank to someone'''
     rank = {
         'profile': profile,
-        'rank': rank
+        'rank': rank + profile['rank']
     }
-    profile_to_rank = calculate_rating(rank, profile_to_rank)
+    new_profile = calculate_rating(rank, profile_to_rank)
     
-    return profile_to_rank
+    return new_profile
 
 
 if __name__ == "__main__":
+    time_start = time.time()
+    
     my_profile = debug_random_profile_generator(3.156, 50, username='Tymec', description=';/', variation=5)
-    print(f'{my_profile["username"]}: {my_profile["rank"]}')
+    print(f'{my_profile["username"]}: {my_profile["rank"]} | {time.time() - time_start}')
+    
+    time_start = time.time()
     another_profile = debug_random_profile_generator(4.755, 500, variation=5)
-    print(f'{another_profile["username"]}: {another_profile["rank"]}')
+    print(f'{another_profile["username"]}: {another_profile["rank"]} | {time.time() - time_start}')
+    
+    time_start = time.time()
     my_profile = rank(another_profile, my_profile, 5.0)
-    print(f'{my_profile["username"]}: {my_profile["rank"]}')
+    print(f'{my_profile["username"]}: {my_profile["rank"]} | {time.time() - time_start}')
