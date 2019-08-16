@@ -14,4 +14,8 @@
 - **wifie:** Automatically signs in on the wifi login page 
 - **image2Sound**: Converts pixels from a image to tones
 - **ImageGrabber**: Downloads x amount of images from reddit
+- **voice_sampler:** Records you reading a sentence and writes it down into a .csv file for NN voice synthesizing
+- **nosedive:** Based on the Black Mirror episode called "Nosedive". Allows you to rate other players. Still unfinished.
+- **pTimeTracker:** Tracks how long processes are running for and saves it.
+- **folderToGPMPlaylist:** Creates a playlist on Google Play Music from a local folder with songs in it.
 - **Eliel:** A group of projects that I did with a teacher a few years ago.
