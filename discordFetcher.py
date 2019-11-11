@@ -1,26 +1,32 @@
-from picamera import PiCamera
 import discord
-import datetime
 import json
 from discord.ext import commands
 from asyncio import sleep
 
-
-#region Definitions
-with open('auth.json', 'rb') as f:
-    auth = json.load(f)
-DISCORD_TOKEN = auth["discord_token"]
-#endregion
+from auth import DISCORD_TOKEN
 
 #region Objects
-bot = commands.Bot(command_prefix='!')
-pi_camera = PiCamera()
+bot = commands.Bot(command_prefix='$')
 #endregion
 
 #region Discord Events
 @bot.event
 async def on_ready():
-    await bot.change_presence(game=discord.Game(name="github.timbobimbo.club | !help"))
+    '''
+    presence = discord.Streaming(
+        name="Dying", 
+        url="github.timbobimbo.club", 
+        details="$help",
+        assets={
+            "large_image": "hero",
+            "large_text": "hero",
+            "small_image": "hero",
+            "small_text": "hero"
+        }
+    )
+    
+    await bot.change_presence()
+    '''
     print('------')
     print('DISCORD BOT')
     print('Logged in as')
@@ -30,15 +36,34 @@ async def on_ready():
 
 #region Discord Commands
 @bot.command(pass_context=True)
-async def camera(ctx):
-    '''Take a picture with PiCamera'''
+async def fetch(ctx, limit, channel_id=None):
+    '''Fetch message from channel'''
     await sleep(0.5)
-    await bot.delete_message(ctx.message)
+    await ctx.message.delete()
 
-    image_filename = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.jpg")
-    pi_camera.capture(image_filename)
-
-    await bot.send_file(ctx.message.channel, image_filename)
+    limit_num = 0
+    try:
+        limit_num = int(limit)
+    except:
+        limit_num = 1
+    
+    if limit is 0:
+        limit = None
+    
+    if channel_id is not None:
+        channel = bot.get_channel(channel_id)
+    else:
+        channel = ctx.message.channel
+    
+    messages = []
+    async for message in channel.history(limit=limit_num):
+        messages.append(message.content)
+    
+    with open("ex.json", "wb") as f:
+        json.dump(f, messages, indent=4)
+        
+    async with channel.typing():
+        await channel.send("bra!")
 #endregion
 
 # Start the bot
