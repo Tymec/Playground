@@ -18,5 +18,4 @@
 - **nosedive:** Based on the Black Mirror episode called "Nosedive". Allows you to rate other players. Still unfinished.
 - **pTimeTracker:** Tracks how long processes are running for and saves it.
 - **folderToGPMPlaylist:** Creates a playlist on Google Play Music from a local folder with songs in it.
-- **discordFetcher:** Fetches all messages with specified filter from a specified channel
 - **Eliel:** A group of projects that I did with a teacher a few years ago.
