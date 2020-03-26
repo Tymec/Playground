@@ -46,9 +46,19 @@ def generate_playlist_from_folder(client, playlist_name, folder_path):
     playlist = create_playlist(client, playlist_name, song_id_list)
     return playlist
 
+def export_playlist(client, playlist_name, output_folder=None):
+    if not playlist_name: return
+    
+    for playlist in client.get_all_user_playlist_contents():
+        print(len(playlist['tracks']))
+    
+    export_skipped = 0
+    song_ids = []
+    
+    return
 
 if __name__ == "__main__":
     mobile_client = Mobileclient()
     # mobile_client.perform_oauth()
     if mobile_client.oauth_login(Mobileclient.FROM_MAC_ADDRESS):
-        generate_playlist_from_folder(mobile_client, args['playlist'], args['folder'])
+        export_playlist(mobile_client, args['playlist'], args['folder'])
