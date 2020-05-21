@@ -1,6 +1,6 @@
 images
-pickle
+data
 helpers
-RTSPCameras\.txt
-
-secrets\.py
+RTSPCameras.txt
+secrets.py
+*.sqlite
