@@ -33,7 +33,6 @@ class ImageGrabber:
         self.progress = self.loadProgress()
         self.API_USAGE_MAP = {
             "gfycat": self.downloadGfycat,
-            "redgifs": self.downloadGfycat,
             "imgur": self.downloadImgur,
             "redd.it": self.downloadReddit,
             "reddituploads": self.downloadReddit,
@@ -382,8 +381,4 @@ if __name__ == "__main__":
     image_grabber = ImageGrabber(REDDIT_CLIENT_ID, REDDIT_SECRET, REDDIT_USER_AGENT)
     
     atexit.register(image_grabber.save)
-    
-    #image_grabber.getSubredditImages('pics', top_scale='all', limit=1000)
-    #fire.Fire(image_grabber.getSubredditImages)
-    #fire.Fire(image_grabber.getSubredditImagesFromList)
     fire.Fire(image_grabber.getMediaFromList)
