@@ -16,5 +16,5 @@ class MusicManager:
         
 if __name__ == "__main__":
     musicMan = MusicManager()
-    musicMan.upload_songs("E:\\Music\\Kanye Vault\\")
+    musicMan.upload_songs("E:\Music\")
     
